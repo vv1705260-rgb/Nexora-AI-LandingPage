@@ -1551,3 +1551,323 @@ body {
     }
 
 }
+/* =========================================
+   PREMIUM LOADER
+========================================= */
+
+.loader-wrapper {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #020617;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100000;
+
+    transition: 0.5s ease;
+
+}
+
+.loader {
+
+    display: flex;
+
+    gap: 15px;
+
+}
+
+.loader span {
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        to right,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+
+    animation: bounce 0.6s infinite alternate;
+
+}
+
+.loader span:nth-child(2) {
+
+    animation-delay: 0.2s;
+
+}
+
+.loader span:nth-child(3) {
+
+    animation-delay: 0.4s;
+
+}
+
+@keyframes bounce {
+
+    from {
+
+        transform: translateY(0);
+
+    }
+
+    to {
+
+        transform: translateY(-20px);
+
+    }
+
+}
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particles-container {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: -1;
+
+}
+
+.particle {
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.4);
+
+    animation: floatParticle 12s linear infinite;
+
+}
+
+@keyframes floatParticle {
+
+    from {
+
+        transform: translateY(100vh);
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        transform: translateY(-100vh);
+
+        opacity: 1;
+
+    }
+
+}
+
+/* =========================================
+   MOUSE GLOW
+========================================= */
+
+.mouse-glow {
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background: radial-gradient(
+        circle,
+        rgba(124,58,237,0.25),
+        transparent 70%
+    );
+
+    transform: translate(-50%, -50%);
+
+    z-index: -1;
+
+}
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+.notification {
+
+    position: fixed;
+
+    top: 30px;
+    right: 30px;
+
+    padding: 18px 25px;
+
+    border-radius: 15px;
+
+    background: rgba(15,23,42,0.95);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(20px);
+
+    transform: translateX(400px);
+
+    transition: 0.5s ease;
+
+    z-index: 99999;
+
+}
+
+.notification.show {
+
+    transform: translateX(0);
+
+}
+
+/* =========================================
+   VOICE BUTTON
+========================================= */
+
+.voice-btn {
+
+    position: fixed;
+
+    bottom: 120px;
+    right: 30px;
+
+    width: 65px;
+    height: 65px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-size: 1.3rem;
+
+    background: linear-gradient(
+        to right,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+    z-index: 9999;
+
+    animation: pulse 2s infinite;
+
+}
+
+/* =========================================
+   MATRIX CANVAS
+========================================= */
+
+#matrixCanvas {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.05;
+
+    z-index: -2;
+
+}
+
+/* =========================================
+   3D TILT EFFECT
+========================================= */
+
+.feature-card,
+.pricing-card,
+.testimonial-card {
+
+    transform-style: preserve-3d;
+
+    perspective: 1000px;
+
+}
+
+/* =========================================
+   CURSOR TRAIL
+========================================= */
+
+.trail {
+
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--secondary-color);
+
+    pointer-events: none;
+
+    opacity: 0.7;
+
+    animation: fadeTrail 0.5s linear forwards;
+
+}
+
+@keyframes fadeTrail {
+
+    to {
+
+        transform: scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .voice-btn {
+
+        width: 55px;
+        height: 55px;
+
+    }
+
+}
