@@ -575,3 +575,342 @@ function getBotReply(input) {
     return "🤖 Thanks for your message! Our AI team will assist you soon.";
 
 }
+/* =========================================
+   PREMIUM LOADER
+========================================= */
+
+window.addEventListener("load", () => {
+
+    const loader =
+        document.getElementById(
+            "loaderWrapper"
+        );
+
+    setTimeout(() => {
+
+        loader.style.opacity = "0";
+
+        loader.style.visibility = "hidden";
+
+    }, 2000);
+
+});
+
+/* =========================================
+   FLOATING PARTICLES
+========================================= */
+
+const particles =
+    document.getElementById("particles");
+
+for (let i = 0; i < 60; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        Math.random() * 10 + 5 + "s";
+
+    particle.style.opacity =
+        Math.random();
+
+    particles.appendChild(particle);
+
+}
+
+/* =========================================
+   MOUSE GLOW EFFECT
+========================================= */
+
+const mouseGlow =
+    document.querySelector(".mouse-glow");
+
+document.addEventListener("mousemove", (e) => {
+
+    mouseGlow.style.left =
+        e.clientX + "px";
+
+    mouseGlow.style.top =
+        e.clientY + "px";
+
+});
+
+/* =========================================
+   NOTIFICATION POPUP
+========================================= */
+
+const notification =
+    document.getElementById(
+        "notification"
+    );
+
+setTimeout(() => {
+
+    notification.classList.add("show");
+
+}, 2500);
+
+setTimeout(() => {
+
+    notification.classList.remove("show");
+
+}, 7000);
+
+/* =========================================
+   VOICE ASSISTANT
+========================================= */
+
+const voiceBtn =
+    document.getElementById("voiceBtn");
+
+voiceBtn.addEventListener("click", () => {
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            "Welcome to Nexora AI. Explore our futuristic platform."
+        );
+
+    speech.rate = 1;
+
+    speech.pitch = 1;
+
+    speech.volume = 1;
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+});
+
+/* =========================================
+   3D TILT EFFECT
+========================================= */
+
+const tiltCards =
+    document.querySelectorAll(
+        ".feature-card, .pricing-card, .testimonial-card"
+    );
+
+tiltCards.forEach(card => {
+
+    card.addEventListener(
+        "mousemove",
+        (e) => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+            const x =
+                e.clientX - rect.left;
+
+            const y =
+                e.clientY - rect.top;
+
+            const rotateY =
+                ((x / rect.width) - 0.5) * 20;
+
+            const rotateX =
+                ((y / rect.height) - 0.5) * -20;
+
+            card.style.transform =
+                `
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                scale(1.03)
+                `;
+        }
+    );
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                `
+                rotateX(0)
+                rotateY(0)
+                scale(1)
+                `;
+        }
+    );
+
+});
+
+/* =========================================
+   MATRIX RAIN EFFECT
+========================================= */
+
+const canvas =
+    document.getElementById(
+        "matrixCanvas"
+    );
+
+const ctx =
+    canvas.getContext("2d");
+
+canvas.width =
+    window.innerWidth;
+
+canvas.height =
+    window.innerHeight;
+
+const letters =
+    "01AI010101NEXORA";
+
+const fontSize = 14;
+
+const columns =
+    canvas.width / fontSize;
+
+const drops = [];
+
+for (let x = 0; x < columns; x++) {
+
+    drops[x] = 1;
+
+}
+
+function drawMatrix() {
+
+    ctx.fillStyle =
+        "rgba(0,0,0,0.05)";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle =
+        "#06b6d4";
+
+    ctx.font =
+        fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+
+        const text =
+            letters[
+                Math.floor(
+                    Math.random() *
+                    letters.length
+                )
+            ];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if (
+            drops[i] * fontSize >
+                canvas.height &&
+            Math.random() > 0.975
+        ) {
+
+            drops[i] = 0;
+
+        }
+
+        drops[i]++;
+
+    }
+
+}
+
+setInterval(drawMatrix, 35);
+
+/* =========================================
+   CURSOR TRAIL EFFECT
+========================================= */
+
+document.addEventListener("mousemove", (e) => {
+
+    const trail =
+        document.createElement("div");
+
+    trail.classList.add("trail");
+
+    trail.style.left =
+        e.clientX + "px";
+
+    trail.style.top =
+        e.clientY + "px";
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+
+        trail.remove();
+
+    }, 500);
+
+});
+
+/* =========================================
+   ADVANCED SCROLL ANIMATION
+========================================= */
+
+const animatedElements =
+    document.querySelectorAll(
+        ".feature-card, .pricing-card, .testimonial-card"
+    );
+
+window.addEventListener("scroll", () => {
+
+    animatedElements.forEach(el => {
+
+        const position =
+            el.getBoundingClientRect().top;
+
+        const screenHeight =
+            window.innerHeight;
+
+        if (position < screenHeight - 100) {
+
+            el.style.opacity = "1";
+
+            el.style.transform =
+                "translateY(0)";
+
+        }
+
+    });
+
+});
+
+/* =========================================
+   FLOATING DASHBOARD EFFECT
+========================================= */
+
+const glassCard =
+    document.querySelector(".glass-card");
+
+window.addEventListener("scroll", () => {
+
+    const scrollY =
+        window.scrollY;
+
+    glassCard.style.transform =
+        `translateY(${scrollY * 0.05}px)`;
+
+});
+
+/* =========================================
+   AUTO GREETING MESSAGE
+========================================= */
+
+setTimeout(() => {
+
+    console.log(
+        "🚀 Nexora AI Premium Features Loaded"
+    );
+
+}, 3000);
