@@ -427,3 +427,151 @@ console.log(
     "🚀 Nexora AI Landing Page Loaded Successfully"
 
 );
+/* =========================================
+   AI CHAT ASSISTANT
+========================================= */
+
+const chatToggle =
+    document.getElementById("chatToggle");
+
+const chatBox =
+    document.getElementById("chatBox");
+
+const closeChat =
+    document.getElementById("closeChat");
+
+const sendMessage =
+    document.getElementById("sendMessage");
+
+const chatInput =
+    document.getElementById("chatInput");
+
+const chatBody =
+    document.getElementById("chatBody");
+
+/* OPEN CHAT */
+chatToggle.addEventListener("click", () => {
+
+    chatBox.classList.toggle("active");
+
+});
+
+/* CLOSE CHAT */
+closeChat.addEventListener("click", () => {
+
+    chatBox.classList.remove("active");
+
+});
+
+/* SEND MESSAGE */
+sendMessage.addEventListener("click", sendChat);
+
+chatInput.addEventListener("keypress", (e) => {
+
+    if (e.key === "Enter") {
+
+        sendChat();
+
+    }
+
+});
+
+function sendChat() {
+
+    const text = chatInput.value.trim();
+
+    if (text === "") return;
+
+    /* USER MESSAGE */
+    addMessage(text, "user");
+
+    chatInput.value = "";
+
+    /* TYPING EFFECT */
+    const typing =
+        document.createElement("div");
+
+    typing.classList.add("message", "bot");
+
+    typing.innerHTML = "Typing...";
+
+    chatBody.appendChild(typing);
+
+    chatBody.scrollTop =
+        chatBody.scrollHeight;
+
+    /* AUTO REPLY */
+    setTimeout(() => {
+
+        typing.remove();
+
+        let reply =
+            getBotReply(text);
+
+        addMessage(reply, "bot");
+
+    }, 1500);
+
+}
+
+/* ADD MESSAGE */
+function addMessage(text, sender) {
+
+    const message =
+        document.createElement("div");
+
+    message.classList.add(
+        "message",
+        sender
+    );
+
+    message.innerHTML = text;
+
+    chatBody.appendChild(message);
+
+    chatBody.scrollTop =
+        chatBody.scrollHeight;
+
+}
+
+/* AI REPLIES */
+function getBotReply(input) {
+
+    input = input.toLowerCase();
+
+    if (
+        input.includes("hello") ||
+        input.includes("hi")
+    ) {
+
+        return "👋 Hello! Welcome to Nexora AI.";
+
+    }
+
+    if (
+        input.includes("price")
+    ) {
+
+        return "💰 We offer flexible pricing plans for all businesses.";
+
+    }
+
+    if (
+        input.includes("service")
+    ) {
+
+        return "⚡ Nexora AI provides automation, analytics, and collaboration tools.";
+
+    }
+
+    if (
+        input.includes("contact")
+    ) {
+
+        return "📩 You can contact us using the contact form below.";
+
+    }
+
+    return "🤖 Thanks for your message! Our AI team will assist you soon.";
+
+}
