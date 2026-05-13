@@ -730,7 +730,72 @@
          JS FILE
     ========================== -->
     <script src="script.js"></script>
+<!-- =========================================
+     AI ASSISTANT WIDGET
+========================================= -->
 
+<div class="ai-chat-container">
+
+    <!-- TOGGLE BUTTON -->
+    <button class="chat-toggle" id="chatToggle">
+
+        <i class="fa-solid fa-robot"></i>
+
+    </button>
+
+    <!-- CHAT BOX -->
+    <div class="chat-box" id="chatBox">
+
+        <!-- HEADER -->
+        <div class="chat-header">
+
+            <div class="chat-title">
+
+                <i class="fa-solid fa-brain"></i>
+                Nexora AI Assistant
+
+            </div>
+
+            <button id="closeChat">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!-- CHAT BODY -->
+        <div class="chat-body" id="chatBody">
+
+            <div class="message bot">
+
+                👋 Hello! Welcome to Nexora AI.
+                How can I help you today?
+
+            </div>
+
+        </div>
+
+        <!-- INPUT -->
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask something..."
+            >
+
+            <button id="sendMessage">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 </body>
 
   </html>
